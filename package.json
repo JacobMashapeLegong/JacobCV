@@ -13,7 +13,9 @@
     "react-dom": "^18.2.0",
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
-    "@fontsource/roboto": "latest"
+    "@fontsource/roboto": "latest",
+    "framer-motion": "latest",
+    "styled-components": "latest"
   },
   "devDependencies": {
     "vite": "^5.0.0"

@@ -1,3 +1,4 @@
+// src/components/SkillMatrix.jsx
 import React, { useState } from "react";
 import {
     Box,
@@ -6,63 +7,28 @@ import {
     TableBody,
     TableCell,
     TableContainer,
-    TableRow,
     Paper,
     Slider,
     Chip,
 } from "@mui/material";
+import { motion } from "framer-motion";
 
 const initialSkills = [
-    // CLOUD
     { category: "CLOUD", name: "AWS (EC2, S3, RDS, Route53, CloudFront, EKS)", level: 4 },
     { category: "CLOUD", name: "IAM", level: 4 },
     { category: "CLOUD", name: "VPCs", level: 3 },
-
-    // INFRASTRUCTURE-AS-CODE
     { category: "INFRASTRUCTURE-AS-CODE", name: "Terraform", level: 4 },
     { category: "INFRASTRUCTURE-AS-CODE", name: "Jsonnet", level: 3 },
-
-    // CONTAINERS & ORCHESTRATION
     { category: "CONTAINERS & ORCHESTRATION", name: "Docker", level: 5 },
     { category: "CONTAINERS & ORCHESTRATION", name: "Kubernetes", level: 4 },
-    { category: "CONTAINERS & ORCHESTRATION", name: "ArgoCD", level: 3 },
-
-    // MONITORING & ALERTING
-    { category: "MONITORING & ALERTING", name: "Prometheus", level: 4 },
-    { category: "MONITORING & ALERTING", name: "Alertmanager", level: 3 },
-    { category: "MONITORING & ALERTING", name: "Grafana", level: 5 },
-    { category: "MONITORING & ALERTING", name: "Datadog", level: 3 },
-    { category: "MONITORING & ALERTING", name: "CloudWatch", level: 4 },
-
-    // CI/CD & AUTOMATION
-    { category: "CI/CD & AUTOMATION", name: "Jenkins", level: 4 },
-    { category: "CI/CD & AUTOMATION", name: "Bitbucket Pipelines", level: 3 },
     { category: "CI/CD & AUTOMATION", name: "GitHub Actions", level: 4 },
-
-    // PROGRAMMING LANGUAGES
     { category: "PROGRAMMING LANGUAGES", name: "Java", level: 4 },
     { category: "PROGRAMMING LANGUAGES", name: "Python", level: 4 },
-    { category: "PROGRAMMING LANGUAGES", name: "Bash", level: 3 },
-    { category: "PROGRAMMING LANGUAGES", name: "YAML", level: 5 },
-    { category: "PROGRAMMING LANGUAGES", name: "JSON", level: 5 },
-
-    // VERSION CONTROL
     { category: "VERSION CONTROL", name: "Git", level: 5 },
-    { category: "VERSION CONTROL", name: "Bitbucket", level: 4 },
-
-    // OS & ENVIRONMENTS
     { category: "OS & ENVIRONMENTS", name: "Linux", level: 5 },
-    { category: "OS & ENVIRONMENTS", name: "macOS", level: 4 },
-    { category: "OS & ENVIRONMENTS", name: "Windows", level: 4 },
 ];
 
-const marks = [
-    { value: 1, label: "" },
-    { value: 2, label: "" },
-    { value: 3, label: "" },
-    { value: 4, label: "" },
-    { value: 5, label: "" },
-];
+const marks = Array.from({ length: 5 }, (_, i) => ({ value: i + 1, label: "" }));
 
 const SkillMatrix = () => {
     const [skills, setSkills] = useState(initialSkills);
@@ -73,22 +39,42 @@ const SkillMatrix = () => {
         setSkills(updated);
     };
 
-    // Group skills by category
     const groupedSkills = skills.reduce((acc, skill) => {
         acc[skill.category] = acc[skill.category] || [];
         acc[skill.category].push(skill);
         return acc;
     }, {});
 
+    const fadeVariant = {
+        hidden: { opacity: 0, y: 40 },
+        visible: (i = 0) => ({
+            opacity: 1,
+            y: 0,
+            transition: { delay: i * 0.1, duration: 0.6, ease: "easeOut" },
+        }),
+    };
+
     return (
         <Box
             p={4}
+            component={motion.div}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
             sx={{
-                backgroundColor: "transparent",
+                background: "linear-gradient(145deg, #232526, #414345)",
+                borderRadius: "14px",
+                boxShadow: "inset 0 0 10px #666, 0 6px 20px rgba(0,0,0,0.5)",
                 color: "#fff",
             }}
         >
-            <Typography variant="h5" align="center" gutterBottom sx={{ mb: 3, fontWeight: "bold" }}>
+            <Typography
+                variant="h5"
+                align="center"
+                gutterBottom
+                sx={{ mb: 3, fontWeight: "bold", color: "#06b6d4" }}
+            >
                 💼 DevOps Skill Matrix
             </Typography>
 
@@ -96,7 +82,7 @@ const SkillMatrix = () => {
                 component={Paper}
                 elevation={3}
                 sx={{
-                    backgroundColor: "rgba(255, 255, 255, 0.05)",
+                    backgroundColor: "rgba(255,255,255,0.05)",
                     backdropFilter: "blur(10px)",
                     borderRadius: "10px",
                     maxWidth: "900px",
@@ -105,55 +91,68 @@ const SkillMatrix = () => {
             >
                 <Table size="small">
                     <TableBody>
-                        {Object.keys(groupedSkills).map((category) => (
-                            <React.Fragment key={category}>
-                                {/* Category Header Row */}
-                                <TableRow>
+                        {Object.keys(groupedSkills).map((category, catIdx) => (
+                            <motion.tbody
+                                key={category}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                variants={{
+                                    hidden: {},
+                                    visible: { transition: { staggerChildren: 0.1 } },
+                                }}
+                            >
+                                <motion.tr variants={fadeVariant} custom={catIdx}>
                                     <TableCell
                                         colSpan={2}
                                         sx={{
-                                            backgroundColor: "rgba(255, 255, 255, 0.08)",
+                                            backgroundColor: "rgba(255,255,255,0.08)",
                                             color: "#90caf9",
                                             fontWeight: "bold",
-                                            fontSize: "1rem",
                                             textTransform: "uppercase",
                                         }}
                                     >
                                         <Chip
                                             label={category}
-                                            color="primary"
                                             size="small"
-                                            sx={{ fontWeight: "bold", backgroundColor: "rgba(25,118,210,0.3)" }}
+                                            sx={{
+                                                fontWeight: "bold",
+                                                backgroundColor: "rgba(25,118,210,0.3)",
+                                                color: "#90caf9",
+                                            }}
                                         />
                                     </TableCell>
-                                </TableRow>
+                                </motion.tr>
 
-                                {/* Skill Rows */}
-                                {groupedSkills[category].map((skill, index) => (
-                                    <TableRow key={skill.name} hover>
+                                {groupedSkills[category].map((skill, i) => (
+                                    <motion.tr key={skill.name} variants={fadeVariant} custom={i}>
                                         <TableCell sx={{ pl: 4, color: "#fff", fontSize: "0.9rem" }}>
                                             {skill.name}
                                         </TableCell>
                                         <TableCell align="right" sx={{ pr: 4 }}>
                                             <Slider
                                                 value={skill.level}
-                                                step={1}
-                                                marks={marks}
+                                                onChange={(_, newValue) =>
+                                                    handleChange(
+                                                        skills.findIndex((s) => s.name === skill.name),
+                                                        newValue
+                                                    )
+                                                }
                                                 min={1}
                                                 max={5}
-                                                onChange={(_, newValue) => handleChange(index, newValue)}
+                                                marks={marks}
                                                 sx={{
                                                     width: "150px",
-                                                    color: "#64b5f6",
+                                                    color: "#06b6d4",
                                                     "& .MuiSlider-thumb": { height: 10, width: 10 },
                                                     "& .MuiSlider-track": { height: 6 },
                                                     "& .MuiSlider-rail": { height: 6 },
                                                 }}
                                             />
                                         </TableCell>
-                                    </TableRow>
+                                    </motion.tr>
                                 ))}
-                            </React.Fragment>
+                            </motion.tbody>
                         ))}
                     </TableBody>
                 </Table>
