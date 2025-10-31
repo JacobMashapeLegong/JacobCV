@@ -7,12 +7,13 @@ export default function Header(){
             <img src={avatar} alt="avatar" className="avatar"/>
             <div>
                 <h1>Jacob Mashape Legong</h1>
-                <h2>Devops/Fullstack Engineer — React, UX, AWS, Kubernetes, Docker</h2>
+                <h2>Devops/Fullstack Engineer — React, UX, AWS, Kubernetes, Docker, Java</h2>
                 <div style={{marginTop:8}}>
-                    <span className="tag">React</span>
+                    <span className="tag">Java</span>
                     <span className="tag">AWS</span>
                     <span className="tag">Kubernetes</span>
                     <span className="tag">Docker</span>
+                    <span className="tag">React</span>
                 </div>
             </div>
             <div style={{marginLeft:"auto",textAlign:"right"}}>
