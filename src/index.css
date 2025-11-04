@@ -167,3 +167,123 @@ body.light .metallic {
     0 6px 15px rgba(0,0,0,0.1);
     border: 1px solid rgba(0,0,0,0.05);
 }
+
+/* === Responsive Layout for Mobile and Tablets === */
+@media (max-width: 1024px) {
+    .container {
+        margin: 16px 24px;
+    }
+    .card {
+        padding: 18px;
+    }
+    h1 { font-size: 22px; }
+    h2 { font-size: 16px; }
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 10px 12px;
+    }
+
+    .card {
+        padding: 16px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 14px;
+    }
+
+    h3 {
+        font-size: 14px;
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .avatar {
+        width: 70px;
+        height: 70px;
+    }
+
+    .tag {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+
+    /* Make all sections span full width */
+    .section {
+        margin-top: 16px;
+        width: 100%;
+    }
+
+    /* Metallic containers fill screen neatly */
+    .metallic {
+        border-radius: 8px;
+        padding: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Stack header vertically */
+    .header,
+    .row,
+    .col {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    .avatar {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 10px;
+    }
+
+    .card {
+        box-shadow: none;
+    }
+
+    /* Reduce paddings for sections */
+    .section {
+        margin-top: 12px;
+        padding: 8px 0;
+    }
+
+    .tag {
+        margin-bottom: 4px;
+    }
+
+    /* Allow tables (like SkillMatrix) to scroll horizontally */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    /* Center toggle button for accessibility */
+    button[title] {
+        top: 10px;
+        right: 10px;
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 400px) {
+    h1 { font-size: 18px; }
+    h2 { font-size: 13px; }
+    h3 { font-size: 13px; }
+    .avatar {
+        width: 55px;
+        height: 55px;
+    }
+    .tag {
+        font-size: 11px;
+    }
+}

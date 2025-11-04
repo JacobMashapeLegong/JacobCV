@@ -15,7 +15,8 @@
     "@emotion/styled": "latest",
     "@fontsource/roboto": "latest",
     "framer-motion": "latest",
-    "styled-components": "latest"
+    "styled-components": "latest",
+    "@vitejs/plugin-react": "latest"
   },
   "devDependencies": {
     "vite": "^5.0.0"

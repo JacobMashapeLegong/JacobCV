@@ -12,16 +12,18 @@ import ThemeToggle from "./components/ThemeToggle";
 
 export default function App() {
     return (
-        <div className="container">
+        <div className="App">
             <ThemeToggle />
-            <div className="card metallic">
-                <AnimatedSection delay={0.1}><Header /></AnimatedSection>
-                <AnimatedSection delay={0.02}><Hero /></AnimatedSection>
-                <AnimatedSection delay={0.03}><Experience /></AnimatedSection>
-                <AnimatedSection delay={0.04}><Education /></AnimatedSection>
-                <AnimatedSection delay={0.05}><Projects /></AnimatedSection>
-                <AnimatedSection delay={0.06}><SkillMatrix /></AnimatedSection>
-                <AnimatedSection delay={0.07}><Contact /></AnimatedSection>
+            <div className="container">
+                <div className="card metallic">
+                    <AnimatedSection delay={0.1}><Header /></AnimatedSection>
+                    <AnimatedSection delay={0.02}><Hero /></AnimatedSection>
+                    <AnimatedSection delay={0.03}><Experience /></AnimatedSection>
+                    <AnimatedSection delay={0.04}><Education /></AnimatedSection>
+                    <AnimatedSection delay={0.05}><Projects /></AnimatedSection>
+                    <AnimatedSection delay={0.06}><SkillMatrix /></AnimatedSection>
+                    <AnimatedSection delay={0.07}><Contact /></AnimatedSection>
+                </div>
             </div>
         </div>
     );

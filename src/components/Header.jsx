@@ -8,6 +8,7 @@ export default function Header() {
 
     return (
         <motion.div
+            className="header"
             initial={{ opacity: 0, y: -30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
@@ -17,6 +18,7 @@ export default function Header() {
                 alignItems: "center",
                 gap: 20,
                 width: "100%",
+                flexWrap: "wrap",
             }}
         >
             <motion.img
@@ -26,14 +28,6 @@ export default function Header() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                style={{
-                    width: 85,
-                    height: 85,
-                    borderRadius: "50%",
-                    objectFit: "cover",
-                    border: "2px solid rgba(255,255,255,0.1)",
-                    boxShadow: "0 0 15px rgba(6,182,212,0.3)",
-                }}
             />
 
             <div style={{ flexGrow: 1 }}>
