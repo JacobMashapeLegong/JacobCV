@@ -2,66 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const jobs = [
-    {
-        school:"Turfsport",
-        course_name:"DevOps Team Lead",
-        period:"Dec 2023 – Sep 2025",
-        bullets:[
-            "Led a DevOps team to deliver automated CI/CD workflows, reducing deployment\n" +
-            "time by 40%.",
-            "Defined and implemented release strategies aligned with business goals.",
-            "Enhanced monitoring and reliability across AWS infrastructure with Prometheus\n" +
-            "and Grafana."
-        ]
-    },
-    {
-        school:"Turfsport",
-        course_name:"DevOps Engineer",
-        period:"Oct 2022 – Nov 2023",
-        bullets:[
-            "Built and maintained Kubernetes clusters via AWS EKS and Terraform",
-            "Expanded AWS infrastructure (RDS, Route53, CloudFront, IAM) for high availability systems.",
-            "Implemented comprehensive monitoring and alerting pipelines using Prometheus and CloudWatch"
-        ]
-    },
-    {
-        school:"Entelect (Client: Standard Bank South Africa)",
-        course_name:"Intermediate Software Engineer ",
-        period:"Oct 2022 – Nov 2023",
-        bullets:[
-            "Developed and supported backend payment services using Java and Spring Boot.",
-            "Delivered features for Inter-account Transfers and Bulk Payments systems.",
-            "Worked on DevOps integration into payment pipelines to improve deployment consistency."
-        ]
-    },
-    {
-        school:"Psybergate (Pty) Ltd ",
-        course_name:"Junior Java Developer",
-        period:"Jan 2019 – Nov 2020",
-        bullets:[
-            "Contributed to enterprise-grade applications through full SDLC using Java EE and Spring.",
-            "Improved build automation processes using Maven and Gradle.",
-            "Supported development of internal tooling and environment automation."
-        ]
-    },
-    {
-        school:"Accenture",
-        course_name:"Graduate",
-        period:"Feb 2018 – Dec 2018",
-        bullets:[
-            "Collaborated on prototype business solutions involving automation technologies.",
-            "Assisted with internal software testing and support initiatives."
-        ]
-    },
-    {
-        school:"Oracle",
-        course_name:"Software Developer Intern",
-        period:"Oct 2022 – Nov 2023",
-        bullets:[
-            "Supported development and QA processes for Oracle-based systems.",
-            "Gained exposure to enterprise application lifecycle and database integration."
-        ]
-    }
 ];
 
 export default function Experience() {
